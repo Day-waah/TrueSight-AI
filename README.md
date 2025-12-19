@@ -29,7 +29,44 @@ A newspaper-style web application for detecting deepfake images using machine le
 - **Autoencoder**: For anomaly detection based on reconstruction error
 - Combined scoring for final prediction
 
+## Model Files
+
+**Note:** Due to GitHub's file size limits, the trained model files are not included in this repository. To run the application, you need to download or train the models separately.
+
+### Required Model Files:
+- `models/ae.pt` - Autoencoder model (~300MB)
+- `models/cnn_efficientnet_b0.pt` - CNN classifier (~50MB) 
+- `models/cnn_mobilenetv2.pt` - Alternative CNN model (~50MB)
+
+### Option 1: Download Pre-trained Models
+If you have access to the pre-trained models, place them in the `models/` directory.
+
+### Option 2: Train Your Own Models
+1. Prepare training data in `data/` directory (cropped faces from real/fake images)
+2. Run training scripts:
+   ```bash
+   python src/train_ae.py      # Train autoencoder
+   python src/train_cnn.py     # Train CNN classifiers
+   ```
+
+### Option 3: Use Demo Mode
+The application will show an error if models are missing. For demonstration purposes, you can modify `backend/app.py` to return mock predictions.
+
 ## Limitations
+
+- Prototype model with limited accuracy
+- Video detection not fully implemented (placeholder)
+- Requires face detection in images
+- Runs on CPU only
+
+## Future Improvements
+
+- Train models on larger datasets for better accuracy
+- Implement full video frame analysis
+- Add more advanced models (e.g., transformers)
+- Deploy to cloud for better performance
+
+## Quick Start
 
 - Prototype model with limited accuracy
 - Video detection not fully implemented (placeholder)
